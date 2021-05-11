@@ -7,29 +7,30 @@ import {Room} from '../models/Room';
   providedIn: 'root'
 })
 export class RoomService {
+  url = 'https://quiz-maniav2.herokuapp.com'
   constructor(private http: HttpClient) {
 
   }
 
   getRooms() {
-    return this.http.get('/api/rooms/');
+    return this.http.get(this.url+'/api/rooms/');
   }
 
   getRoom(id: number) {
-    return this.http.get('/room/'+id);
+    return this.http.get(this.url+'/room/'+id);
   }
 
   getJoinRoom(password: string) {
-    return this.http.get('/api/joinRoom/'+password);
+    return this.http.get(this.url+'/api/joinRoom/'+password);
   }
 
   createRoom(body: Room){
     const headers = {'content-type':'application/json'};
-    return this.http.post<any>('/api/createRoom',JSON.stringify(body),{headers});
+    return this.http.post<any>(this.url+'/api/createRoom',JSON.stringify(body),{headers});
   }
 
   setSelectedQuiz(quizId: number, roomId: number) {
-    return this.http.patch('/api/selectQuiz/'+roomId, JSON.stringify({quizId}))
+    return this.http.patch(this.url+'/api/selectQuiz/'+roomId, JSON.stringify({quizId}))
   }
 
 
