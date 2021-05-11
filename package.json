@@ -1,9 +1,9 @@
 {
-  "name": "frontend",
+  "name": "quiz-maniav2",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server/server.js",
+    "start": "node server.js",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
@@ -21,6 +21,8 @@
     "@angular/platform-browser": "~11.2.13",
     "@angular/platform-browser-dynamic": "~11.2.13",
     "@angular/router": "~11.2.13",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
