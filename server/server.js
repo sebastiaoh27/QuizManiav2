@@ -8,13 +8,22 @@ var quizRest = require("./routes/quizzes")
 var questionRest = require("./routes/questions")
 const urlencoded = require("body-parser/lib/types/urlencoded");
 
+function requireHTTPS(req, res, next) {
+  // The 'x-forwarded-proto' check is for Heroku
+  if (!req.secure && req.get('x-forwarded-proto') !== 'https') {
+    return res.redirect('https://' + req.get('host') + req.url);
+  }
+  next();
+}
+
 const server = require('http').createServer(app);
 //const io = require('socket.io')(server);
 
 app.use(bodyParser.json());
 app.use(urlencoded({ extended: true }));
-
-server.listen(3000);
+app.use(requireHTTPS)
+app.listen(process.env.PORT || 3000)
+//server.listen(3000);
 app.use(express.static(__dirname + '/public'))
 
 //room
