@@ -1,0 +1,61 @@
+body {
+  width: 100%;
+  height: 100%;
+
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.example-container {
+  width: 100%;
+  height: 100%;
+
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+
+}
+
+.sidenav {
+  padding: 0;
+  width: 15vw;
+
+}
+
+.menu-list .menu-item {
+
+  height: 10vh;
+
+}
+
+.menu-item:hover {
+  background-color: #d0d0d0;
+  cursor: pointer;
+}
+
+.menu-header {
+  margin-bottom: 10vh;
+  text-align: center;
+}
+
+.menu-icon-nav {
+  margin-right: 2vw;
+}
+
+.menu-button {
+  z-index: 1;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+

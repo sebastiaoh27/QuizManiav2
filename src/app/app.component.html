@@ -1,0 +1,25 @@
+<div class="container">
+  <mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="sidenav" mode="over">
+      <h1 class="menu-header">Menu</h1>
+      <mat-list class="menu-list">
+        <mat-list-item class="menu-item" *ngFor="let item of fillerNav" routerLink="{{item[2]}}">
+          <mat-icon class="menu-icon-nav">{{item[0]}}</mat-icon>
+          {{item[1]}}
+        </mat-list-item>
+      </mat-list>
+
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+      <button class="menu-button" mat-icon-button color="primary" (click)="drawer.toggle()" aria-label="button with a menu icon">
+        <mat-icon style="font-size: 30px">menu</mat-icon>
+      </button>
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+
+  </mat-drawer-container>
+</div>
+

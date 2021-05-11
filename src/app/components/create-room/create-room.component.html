@@ -1,0 +1,23 @@
+<h1 class="page-title">{{option == "Join" ? 'Join': 'Create'}} Room</h1>
+<div class="room-creation-box">
+  <div class="input-box">
+    <mat-form-field class="form-room">
+      <mat-label class="label-input">{{option == "Join" ? "Room Code": "Room Name"}}</mat-label>
+      <input class="input-room" matInput type="text" [(ngModel)]="roomName" placeholder="{{option == 'Join'? 'Input room code...': 'Input Room Name...'}}">
+      <button mat-button *ngIf="roomName" matSuffix mat-icon-button aria-label="Clear" (click)="roomName=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <button mat-raised-button (click)="joinCreate()" color="primary">{{option == "Join" ? 'Join': 'Create'}}</button>
+  </div>
+  <div class="option-select">
+    <mat-radio-group
+      aria-labelledby="example-radio-group-label"
+      class="example-radio-group"
+      [(ngModel)]="option">
+      <mat-radio-button class="example-radio-button" *ngFor="let o of options" [value]="o">
+        {{o}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+</div>

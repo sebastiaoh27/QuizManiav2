@@ -1,0 +1,10 @@
+<div class="answers-box" *ngIf="quizSelected && !waiting">
+  <mat-divider></mat-divider>
+  <mat-progress-bar mode="determinate" value="{{timer}}"></mat-progress-bar>
+  <h2 class="answer-title">{{question ?question.name: 'loading...'}}</h2>
+  <mat-selection-list  [(ngModel)]="answer" #quiz [multiple]="false">
+    <mat-list-option [ngStyle]="a[1]" *ngFor="let a of answers" (click)="selectAnswer()" [value]="answers.indexOf(a)+1" class="quizzes">
+      <div mat-line>{{a[0]}}</div>
+    </mat-list-option>
+  </mat-selection-list>
+</div>

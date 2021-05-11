@@ -9,7 +9,7 @@ var questionRest = require("./routes/questions")
 const urlencoded = require("body-parser/lib/types/urlencoded");
 
 const server = require('http').createServer(app);
-const io = require('socket.io')(server);
+//const io = require('socket.io')(server);
 
 app.use(bodyParser.json());
 app.use(urlencoded({ extended: true }));

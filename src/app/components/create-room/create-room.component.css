@@ -1,0 +1,31 @@
+.page-title {
+  text-align: center;
+  font-size: 70px;
+  margin: 5vh auto;
+
+}
+
+.room-creation-box {
+  justify-content: center;
+  align-self: center;
+  margin: 20vh auto;
+  width: 20vw;
+  display: flex;
+}
+
+.input-box {
+  display: grid;
+  margin-right: 3vw;
+}
+.input-room {
+  font-size: 18px;
+}
+
+.label-input {
+  font-size: 15px;
+
+}
+
+.form-room {
+  width: 20vw;
+}

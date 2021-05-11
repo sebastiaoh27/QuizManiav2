@@ -1,0 +1,7 @@
+<mat-selection-list [(ngModel)]="quiz" #quizz [multiple]="false">
+  <mat-list-option *ngFor="let q of quizzes" [value]="q" (click)="selectQuiz()" class="quizzes">
+    <mat-icon mat-list-icon>{{icons[q.themeId]}}</mat-icon>
+    <div mat-line>{{q.name}}</div>
+    <div mat-line> {{q.description}} </div>
+  </mat-list-option>
+</mat-selection-list>
