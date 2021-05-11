@@ -26,7 +26,7 @@ app.listen(process.env.PORT || 3000)
 //server.listen(3000);
 app.use(express.static('./dist/quiz-maniav2'))
 
-app.get('/*', (req,res)=>{
+app.get('/', (req,res)=>{
   res.sendFile('index.html',{root: '/dist/quiz-maniav2/'})
 })
 

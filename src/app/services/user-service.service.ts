@@ -14,28 +14,28 @@ export class UserService {
   }
 
   getUsers() {
-    return this.http.get(this.url+'/api/users');
+    return this.http.get('/api/users');
   }
   getUser(id: number) {
-    return this.http.get(this.url+'/api/user/'+id);
+    return this.http.get('/api/user/'+id);
   }
   getUserInRoom(roomId: number) {
-    return this.http.get(this.url+'/api/users/'+ roomId);
+    return this.http.get('/api/users/'+ roomId);
   }
   getWinner(roomId: number) {
-    return this.http.get(this.url+'/api/winner/'+roomId);
+    return this.http.get('/api/winner/'+roomId);
   }
   patchPoints(id: number,points: number) {
     const headers = {'content-type':'application/json'};
-    return this.http.patch(this.url+'/api/increasePoints/'+id,JSON.stringify({points}),{headers});
+    return this.http.patch('/api/increasePoints/'+id,JSON.stringify({points}),{headers});
   }
   patchResetPoints(roomId: number) {
     const headers = {'content-type':'application/json'};
-    return this.http.patch(this.url+'/api/resetPoints/'+roomId,'');
+    return this.http.patch('/api/resetPoints/'+roomId,'');
   }
   createUser(user: User) {
     const headers = {'content-type':'application/json'};
-    return this.http.post(this.url+'/api/createUser',JSON.stringify(user), {headers});
+    return this.http.post('/api/createUser',JSON.stringify(user), {headers});
   }
 
 

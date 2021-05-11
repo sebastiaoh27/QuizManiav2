@@ -12,18 +12,18 @@ export class QuestionService {
   }
 
   getQuestions() {
-    return this.http.get(this.url +'/api/questions');
+    return this.http.get('/api/questions');
   }
   getQuestion(id: number) {
-    return this.http.get(this.url+'/api/question/'+id);
+    return this.http.get('/api/question/'+id);
   }
   getQuestionsInQuiz(quizId: number) {
-    return this.http.get(this.url+'/api/questions/'+ quizId);
+    return this.http.get('/api/questions/'+ quizId);
   }
   /// <reference lib="dom" />
   createQuestion(question: Question) {
     const headers = {'content-type':'application/json'};
-    return this.http.post(this.url+'/api/createQuestion',JSON.stringify(question), {headers});
+    return this.http.post('/api/createQuestion',JSON.stringify(question), {headers});
   }
 
 
