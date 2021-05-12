@@ -1,0 +1,118 @@
+.page-title {
+  text-align: center;
+  font-size: 70px;
+  margin: 5vh auto;
+
+}
+
+.content-holder {
+  display: flex;
+  height: 85.5vh;
+}
+
+.quiz-content {
+  width: 80vw
+}
+
+.players {
+
+  margin-top: 6.4vh;
+  background-color: rgba(231, 231, 231, 0.87);
+  width: 20vw;
+  height: 79vh;
+}
+
+.menu-header {
+  margin-bottom: 10vh;
+  text-align: center;
+}
+
+mat-list {
+  overflow: auto;
+}
+
+.player-list {
+  max-height: 80vw;
+  overflow: auto;
+}
+
+.settings-button {
+  margin-left: 10vw;
+  margin-top: 5vw;
+}
+
+.quiz-title {
+  display: flex;
+  text-align: center;
+  margin-left: 33vw;
+  margin-top: 5vh;
+}
+
+.title {
+  margin-right: 10vw;
+}
+
+.quiz-container {
+  margin: 0 15vw;
+  max-height: 60vh;
+  overflow: auto;
+}
+
+.mat-list-text {
+  width: 50vw;
+}
+
+.loading {
+  display: grid;
+  justify-content: center;
+  margin-top: 10vh;
+}
+
+mat-spinner {
+  margin-left: 8vw;
+}
+
+.answer-title {
+  text-align: center;
+}
+
+.center-button {
+  margin-top: 5vh;
+  margin-left: 35vw;
+}
+
+.next-button {
+  height: 6vh;
+}
+
+.podium {
+  height: 40vh;
+  padding-top: 5vh;
+  display: flex;
+}
+
+.first {
+  background-color: #ffd700;
+  width: 33%;
+  margin-top: 15vh;
+}
+
+.second {
+  background-color: #C0C0C0;
+  width: 33%;
+  margin-left: 0.5%;
+  margin-top: 23vh;
+}
+
+.third {
+  background-color: #cd7f32;
+  width: 33%;
+  margin-right: 0.5%;
+  margin-top: 31vh;
+}
+
+.podium-text {
+  text-align: center;
+  margin-top: 5vh;
+}
+
