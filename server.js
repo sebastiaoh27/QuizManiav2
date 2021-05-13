@@ -1,12 +1,13 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser')
-//var indexRouter = require("./public/routes/index")
 var roomRest = require("./routes/rooms")
 var userRest = require("./routes/users")
 var quizRest = require("./routes/quizzes")
 var questionRest = require("./routes/questions")
+var sessionRest  = require("./routes/sessions")
 const urlencoded = require("body-parser/lib/types/urlencoded");
+var io = require('socket.io')()
 
 function requireHTTPS(req, res, next) {
   // The 'x-forwarded-proto' check is for Heroku
@@ -64,5 +65,13 @@ app.get('/api/question/:id',questionRest)
 app.get('/api/questions/:roomId',questionRest)
 app.patch('/api/editQuestion/:id',questionRest)
 app.delete('/api/deleteQuestion/:id',questionRest)
+
+// session
+app.post('/api/createSession',sessionRest)
+app.get('/api/getUser/:id',sessionRest)
+app.get('/api/getRoom/:id',sessionRest)
+app.patch('/api/setUser/:id',sessionRest)
+app.patch('/api/setRoom/:id',sessionRest)
+
 
 

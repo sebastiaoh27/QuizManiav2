@@ -20,7 +20,7 @@
         <div class="quiz-container">
           <app-three-line-select-list *ngIf="!quizSelected && !waiting && !done" [quizSelected]="quizSelected" [quizzes]="quizzes" (quizOutput)="selectedQuiz = $event" [waiting]="waiting" (questionsOut)="questions = $event; next = true" (roomOutput)="room = $event" [room]="room" (quizSelectedOutput)="quizSelected = $event" (waitingOutput)="waiting = $event"></app-three-line-select-list>
           <app-countdown-select-list *ngIf="!done" [questions]="questions" [waiting]="waiting" [quizSelected]="quizSelected" [next]="next" (nextOut)="next
-=$event" [reset]="reset" (resetOut)="reset = $event" (done)="done = $event"></app-countdown-select-list>
+=$event" [reset]="reset" (resetOut)="reset = $event" (done)="done = $event" (qOut)="questions = $event" (selectedQuiz)="selectedQuiz = $event"></app-countdown-select-list>
           <div class="loading" *ngIf="waiting">
             <h2>Loading...</h2>
             <mat-spinner diameter="30"></mat-spinner>

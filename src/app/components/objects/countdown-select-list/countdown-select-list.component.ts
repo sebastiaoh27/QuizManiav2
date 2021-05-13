@@ -30,28 +30,34 @@ export class CountdownSelectListComponent implements OnChanges{
   @Input('reset')reset
   @Output('done') done = new EventEmitter<any>()
   @Output('resetOut') rOut = new EventEmitter<any>()
+  @Output('qOut') qOut = new EventEmitter<any>()
+  @Output('selectedQuiz') sQOut = new EventEmitter<any>()
 
   ngOnChanges(changes:SimpleChanges) {
-    if (JSON.parse(sessionStorage.getItem('user')).role === 'host') {
-      if (this.reset) {
-        this.timer = 100
-        this.questionNumber = 0
-        this.rOut.emit(false)
+    console.log(JSON.parse(sessionStorage.getItem('user')));
+    if (this.reset) {
+      this.timer = 100
+      this.questionNumber = 0
+      this.rOut.emit(false)
+      this.qOut.emit([])
+      this.qSOut.emit(undefined)
+      this.questions = undefined
+      this.answers = undefined
+      this.question = undefined
+      if (this.clock)this.clock.unsubscribe()
+    }
+    if (this.next && this.questionNumber < this.questions.length) {
+      if (this.timer < 100 && JSON.parse(sessionStorage.getItem('user')).role === 'host') {
+        this._snackbar.open('Please wait for the current question to finish!',null,{duration: 3000})
+      } else {
         if (this.clock)this.clock.unsubscribe()
-      }
-      if (this.next && this.questionNumber < this.questions.length) {
-        if (this.timer < 100) {
-          this._snackbar.open('Please wait for the current question to finish!',null,{duration: 3000})
-        } else {
-          if (this.clock)this.clock.unsubscribe()
-          this.nOut.emit(false)
-          this.loadQuestion()
-          this.timer = 100
-        }
-      }
-      if (this.next && this.timer <100){
         this.nOut.emit(false)
+        this.loadQuestion()
+        this.timer = 100
       }
+    }
+    if (this.next && this.timer <100 && JSON.parse(sessionStorage.getItem('user')).role === 'host' ){
+      this.nOut.emit(false)
     }
 
   }

@@ -17,7 +17,7 @@ export class RoomService {
   }
 
   getRoom(id: number) {
-    return this.http.get('/room/'+id);
+    return this.http.get('/api/room/'+id);
   }
 
   getJoinRoom(password: string) {
