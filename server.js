@@ -38,8 +38,6 @@ app.patch('/api/selectQuiz/:id',roomRest)
 app.patch('/api/setQuestionNumber/:id',roomRest)
 app.delete('/api/deleteRoom/:id',roomRest)
 
-
-
 //user
 app.post('/api/createUser',userRest);
 app.get('/api/users',userRest);
