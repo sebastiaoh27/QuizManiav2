@@ -44,7 +44,6 @@ export class UserRoomComponent implements OnInit {
   ngOnInit(): void {
     this.waiting = true
     this.room = JSON.parse(sessionStorage.getItem('room'));
-    console.log(this.room);
     if (!sessionStorage.getItem('user')) {
       let name = '';
       const d = this.dialog.open(Dialog, {
@@ -79,7 +78,7 @@ export class UserRoomComponent implements OnInit {
         for (const i in res) {
           this.users.push(res[i]);
         }
-        this.users.sort((a,b)=>a.points-b.points);
+        this.users.sort((a,b)=>b.points-a.points);
       });
     this.roomChecker = interval(100)
       .pipe(

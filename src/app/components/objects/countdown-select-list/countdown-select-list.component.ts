@@ -34,7 +34,6 @@ export class CountdownSelectListComponent implements OnChanges{
   @Output('selectedQuiz') sQOut = new EventEmitter<any>()
 
   ngOnChanges(changes:SimpleChanges) {
-    console.log(JSON.parse(sessionStorage.getItem('user')));
     if (this.reset) {
       this.timer = 100
       this.questionNumber = 0
