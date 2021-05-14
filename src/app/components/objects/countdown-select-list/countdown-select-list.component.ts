@@ -2,6 +2,7 @@ import {Component, Input, OnInit, Output, EventEmitter, AfterViewInit, OnChanges
 import {interval} from 'rxjs';
 import {UserService} from '../../../services/user-service.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {RoomService} from '../../../services/room-service.service';
 
 
 @Component({
@@ -11,7 +12,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class CountdownSelectListComponent implements OnChanges{
 
-  constructor(private userService: UserService,private _snackbar: MatSnackBar) {}
+  constructor(private userService: UserService,private _snackbar: MatSnackBar, private roomService: RoomService) {}
 
   @Input('quizSelected') quizSelected
   @Output('quizSelectedOutput') qSOut = new EventEmitter<any>()
@@ -25,6 +26,7 @@ export class CountdownSelectListComponent implements OnChanges{
   @Input('next')next
   @Output('nextOut') nOut = new EventEmitter<any>()
   questionNumber = 0
+  @Output('qNOut') qNOut = new EventEmitter<any>()
   questionLoader
   clock
   @Input('reset')reset
@@ -37,6 +39,10 @@ export class CountdownSelectListComponent implements OnChanges{
     if (this.reset) {
       this.timer = 100
       this.questionNumber = 0
+      this.qNOut.emit(0)
+      this.roomService.setQuestionNumber(0,JSON.parse(sessionStorage.getItem('room')).id).subscribe(res=>{
+        sessionStorage.setItem('room',JSON.stringify(res))
+      })
       this.rOut.emit(false)
       this.qOut.emit([])
       this.qSOut.emit(undefined)
@@ -67,6 +73,10 @@ export class CountdownSelectListComponent implements OnChanges{
     this.question = this.questions[this.questionNumber];
     this.answers = [[this.question.a1, {}], [this.question.a2, {}], [this.question.a3, {}], [this.question.a4, {}]];
     this.questionNumber++
+    this.qNOut.emit(this.questionNumber)
+    this.roomService.setQuestionNumber(this.questionNumber,JSON.parse(sessionStorage.getItem('room')).id).subscribe(res=>{
+      sessionStorage.setItem('room',JSON.stringify(res))
+    })
     this.clock = interval(100).subscribe(()=> {
       this.timer--
     });

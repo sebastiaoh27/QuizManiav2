@@ -35,7 +35,9 @@ app.get('/api/room/:id',roomRest)
 app.get('/api/joinRoom/:password',roomRest)
 app.post('/api/createRoom',roomRest)
 app.patch('/api/selectQuiz/:id',roomRest)
+app.patch('/api/setQuestionNumber/:id',roomRest)
 app.delete('/api/deleteRoom/:id',roomRest)
+
 
 
 //user

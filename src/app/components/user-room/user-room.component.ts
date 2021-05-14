@@ -36,6 +36,7 @@ export class UserRoomComponent implements OnInit {
   next
   roomChecker
   quizSelected
+  questionNumber
 
 
   constructor(private dialog: MatDialog,private userService: UserService, private roomService: RoomService,
@@ -84,29 +85,33 @@ export class UserRoomComponent implements OnInit {
       .pipe(
         startWith(0),
         switchMap(()=> this.roomService.getRoom(this.room.id)))
-      .subscribe(res =>{;
+      .subscribe(res =>{
         this.room = res
         sessionStorage.setItem('room',JSON.stringify(res))
-          if (this.room.selectedQuiz !== -1 && this.waiting){
-            this.quizService.getQuiz(this.room.selectedQuiz).subscribe(response=>{
-              this.selectedQuiz = response
-              this.questionService.getQuestionsInQuiz(this.selectedQuiz.id).subscribe(r=>{
-                this.questions = []
-                for (const i in r){
-                  this.questions.push(r[i])
-                }
-                this.waiting = false
-                this.next = true
-                this.quizSelected = true
-              })
+        if (this.room.questionNumber !== 0 && this.room.questionNumber !== this.questionNumber) {
+          this.next = true
+          this.questionNumber = this.room.questionNumber
+        }
+        if (this.room.selectedQuiz !== -1 && this.waiting){
+          this.quizService.getQuiz(this.room.selectedQuiz).subscribe(response=>{
+            this.selectedQuiz = response
+            this.questionService.getQuestionsInQuiz(this.selectedQuiz.id).subscribe(r=>{
+              this.questions = []
+              for (const i in r){
+                this.questions.push(r[i])
+              }
+              this.waiting = false
+              this.next = true
+              this.quizSelected = true
             })
-          }else if (this.room.selectedQuiz === -1){
-            this.reset = true
-            this.questions = []
-            this.selectedQuiz = undefined
-            this.quizSelected = false
-            this.waiting = true
-          }
+          })
+        }else if (this.room.selectedQuiz === -1){
+          this.reset = true
+          this.questions = []
+          this.selectedQuiz = undefined
+          this.quizSelected = false
+          this.waiting = true
+        }
       })
   }
   ngOnDestroy(): void {

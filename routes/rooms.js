@@ -23,7 +23,8 @@ router.post('/api/createRoom',urlencodedParser,function (req,res) {
             "id":id,
             "name": req.body.name,
             "selectedQuiz":-1,
-            "password": pm.generatePassword()
+            "password": pm.generatePassword(),
+            "questionNumber": 0
         };
         console.log(rooms["room"+id])
         fs.writeFile(path,JSON.stringify(rooms),'utf8',function (err) {
@@ -78,6 +79,19 @@ router.patch('/api/selectQuiz/:id',urlencodedParser,function (req,res) {
         })
         res.end(JSON.stringify(rooms["room"+req.params.id]));
     })
+})
+
+router.patch('/api/setQuestionNumber/:id',urlencodedParser,function (req,res) {
+  fs.readFile(path, 'utf8',function (err,data){
+    var rooms = JSON.parse(data);
+    rooms["room" + req.params.id].questionNumber = parseInt(req.body.questionNumber)
+    fs.writeFile(path,JSON.stringify(rooms),'utf8',function (err) {
+      if (err) {
+        return console.log(err)
+      }
+    })
+    res.end(JSON.stringify(rooms["room"+req.params.id]));
+  })
 })
 
 //Delete

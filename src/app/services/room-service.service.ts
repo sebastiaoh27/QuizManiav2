@@ -34,6 +34,11 @@ export class RoomService {
     return this.http.patch('/api/selectQuiz/'+roomId, JSON.stringify({'selectedQuiz':quizId}),{headers})
   }
 
+  setQuestionNumber(questionNumber: number,roomId:number) {
+    const headers = {'content-type':'application/json'};
+    return this.http.patch('/api/setQuestionNumber/'+roomId, JSON.stringify({'questionNumber': questionNumber}),{headers})
+  }
+
 
 
 }
