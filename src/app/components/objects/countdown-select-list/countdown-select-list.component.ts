@@ -51,6 +51,9 @@ export class CountdownSelectListComponent implements OnChanges{
       this.question = undefined
       if (this.clock)this.clock.unsubscribe()
     }
+    if (this.next && this.questions && this.questionNumber >= this.questions.length) {
+      this.done.emit(true)
+    }
     if (this.next && this.questionNumber < this.questions.length) {
       if (this.timer < 100 && JSON.parse(sessionStorage.getItem('user')).role === 'host') {
         this._snackbar.open('Please wait for the current question to finish!',null,{duration: 3000})
@@ -86,9 +89,7 @@ export class CountdownSelectListComponent implements OnChanges{
       this.showAnswer()
       this.timer = 100;
       await this.sleep(10000)
-      if ( this.questions && this.questionNumber >= this.questions.length) {
-        this.done.emit(true)
-      }
+
     }
 
   }

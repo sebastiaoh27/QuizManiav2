@@ -101,7 +101,7 @@ export class HostRoomComponent implements OnInit, OnDestroy{
         for (const i in res) {
           this.users.push(res[i]);
         }
-        this.users.sort((a,b)=>a.points-b.points);
+        this.users.sort((a,b)=>b.points-a.points);
       });
   }
   ngOnDestroy(): void {
@@ -148,6 +148,7 @@ export class HostRoomComponent implements OnInit, OnDestroy{
       this.selectedQuiz = undefined
       this.reset = true
       this.next = false
+      this.done = false
       this.loadQuizzes()
     })
   }

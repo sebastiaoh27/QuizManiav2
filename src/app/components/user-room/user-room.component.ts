@@ -111,6 +111,7 @@ export class UserRoomComponent implements OnInit {
           this.selectedQuiz = undefined
           this.quizSelected = false
           this.waiting = true
+          this.done = false
         }
       })
   }
